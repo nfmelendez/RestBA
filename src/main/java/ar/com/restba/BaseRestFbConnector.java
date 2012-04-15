@@ -12,6 +12,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import ar.com.restba.json.JsonException;
+import ar.com.restba.json.JsonObject;
+
 import com.restfb.JsonMapper;
 import com.restfb.Parameter;
 import com.restfb.WebRequestor;
@@ -20,8 +23,6 @@ import com.restfb.exception.FacebookExceptionMapper;
 import com.restfb.exception.FacebookJsonMappingException;
 import com.restfb.exception.FacebookOAuthException;
 import com.restfb.exception.FacebookResponseStatusException;
-import com.restfb.json.JsonException;
-import com.restfb.json.JsonObject;
 
 /**
  * Base class that contains data and functionality common to

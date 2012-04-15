@@ -1,7 +1,7 @@
 package ar.com.restba.utils;
 
-import com.restfb.json.JsonArray;
-import com.restfb.json.JsonObject;
+import ar.com.restba.json.JsonArray;
+import ar.com.restba.json.JsonObject;
 
 
 public class RestBAUtils {

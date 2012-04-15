@@ -9,12 +9,12 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.com.restba.json.JsonArray;
+import ar.com.restba.json.JsonObject;
 import ar.com.restba.types.ObrasRegistradas;
 import ar.com.restba.utils.RestBAUtils;
 import au.com.bytecode.opencsv.CSVReader;
 
-import com.restfb.json.JsonArray;
-import com.restfb.json.JsonObject;
 
 public class DefaultRestBAClient implements RestBAClient {
 
