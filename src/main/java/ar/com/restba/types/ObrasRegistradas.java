@@ -1,8 +1,10 @@
 package ar.com.restba.types;
 
-import java.util.Date;
 
 public class ObrasRegistradas {
+	
+	public static final String OBRAS_REGISTRADAS_ID = "ce067ee1-1a4c-46c2-a269-d01e21a7fa4d";
+
 
 	private String nExpediente;
 	private String direccion;
