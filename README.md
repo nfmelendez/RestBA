@@ -8,7 +8,7 @@ RestBA
 
 Quick start
 ==========================
-Para empezar hay que descargar nuestra libreria y sus dependencias. Luego agregarlas al proyecto y listo.
+Para empezar hay que descargar nuestra libreria y sus dependencias. Luego agregarlas al proyecto y listo.<br>
 <b>Libreria:</b><br>
 RestBA 1.0 :  https://github.com/melendeznicolas/RestBA/raw/master/download/lib/restba-1.0.jar <br>
 <b>Dependencias:</b><br>
