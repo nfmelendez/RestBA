@@ -15,7 +15,6 @@ import ar.com.restba.types.ObrasRegistradas;
 import ar.com.restba.utils.RestBAUtils;
 import au.com.bytecode.opencsv.CSVReader;
 
-
 public class DefaultRestBAClient implements RestBAClient {
 
 	private RestFbConnector restFbConnector;
@@ -28,8 +27,11 @@ public class DefaultRestBAClient implements RestBAClient {
 	@Override
 	public List<ObrasRegistradas> fetchObrasRegistradas() {
 
-		JsonObject fetchObject = restFbConnector.fetchObject(
-				"obras-registradas", JsonObject.class);
+		com.restfb.json.JsonObject fetchObjectRestFb = restFbConnector
+				.fetchObject("obras-registradas",
+						com.restfb.json.JsonObject.class);
+
+		JsonObject fetchObject = new JsonObject(fetchObjectRestFb.toString());
 		JsonArray resources = fetchObject.getJsonArray("resources");
 
 		List<ObrasRegistradas> obrasRegistradas = new ArrayList<ObrasRegistradas>();
@@ -88,9 +90,9 @@ public class DefaultRestBAClient implements RestBAClient {
 
 	@Override
 	public JsonObject fetchDataset(String dataset) {
-		JsonObject fetchedObject = restFbConnector.fetchObject(dataset,
-				JsonObject.class);
-		return fetchedObject;
+		com.restfb.json.JsonObject fetchObject = restFbConnector.fetchObject(
+				dataset, com.restfb.json.JsonObject.class);
+		return new JsonObject(fetchObject.toString());
 	}
 
 }

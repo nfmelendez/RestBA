@@ -68,7 +68,7 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
   /**
    * API endpoint URL.
    */
-  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://data.buenosaires.gob.ar/api/rest/dataset/";
+  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://data.buenosaires.gob.ar/api/rest/dataset";
 
   /**
    * Read-only API endpoint URL.
