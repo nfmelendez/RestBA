@@ -1,7 +1,5 @@
 package ar.com.restba;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,18 +7,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 import ar.com.restba.types.ObrasRegistradas;
 import au.com.bytecode.opencsv.CSVReader;
 
-import com.restfb.Parameter;
 import com.restfb.json.JsonArray;
 import com.restfb.json.JsonObject;
 
@@ -40,6 +31,8 @@ public class DefaultDataBairesClient implements DataBairesClient {
 				"obras-registradas", JsonObject.class);
 		JsonArray resources = fetchObject.getJsonArray("resources");
 
+		List<ObrasRegistradas> obrasRegistradas = new ArrayList<ObrasRegistradas>();
+
 		for (int i = 0; i < resources.length(); i++) {
 			JsonObject resource = resources.getJsonObject(i);
 			String url = resource.getString("url")
@@ -57,12 +50,18 @@ public class DefaultDataBairesClient implements DataBairesClient {
 				throw new RuntimeException(e);
 			}
 
-			List<ObrasRegistradas> obrasRegistradas = new ArrayList<ObrasRegistradas>();
 			CSVReader reader = null;
 			reader = new CSVReader(new InputStreamReader(inputStream));
 			String[] nextLine;
+			boolean firstTime = true;
 			try {
 				while ((nextLine = reader.readNext()) != null) {
+
+					// To Remove Header of CSV
+					if (firstTime) {
+						firstTime = false;
+						continue;
+					}
 					ObrasRegistradas entity = new ObrasRegistradas();
 					entity.setnExpediente(nextLine[0]);
 					entity.setDireccion(nextLine[1]);
@@ -82,11 +81,8 @@ public class DefaultDataBairesClient implements DataBairesClient {
 					throw new RuntimeException(e);
 				}
 			}
-			obrasRegistradas.remove(0);
-			return obrasRegistradas;
 		}
-
-		return Collections.emptyList();
+		return obrasRegistradas;
 	}
 
 }
