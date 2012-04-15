@@ -8,7 +8,7 @@ RestBA
 
 Quick start
 ==========================
-Para empezar hay que descargar nuestra libreria y sus dependencias. Luego agregarlas al proyecto.
+Para empezar hay que descargar nuestra libreria y sus dependencias. Luego agregarlas al proyecto y ya salir andando.
 
 RestBA 1.0 :  https://github.com/melendeznicolas/RestBA/raw/master/download/lib/restba-1.0.jar <br>
 Open CSV 2.3: https://github.com/melendeznicolas/RestBA/raw/master/download/lib/opencsv-2.3.jar <br>
