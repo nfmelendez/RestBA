@@ -20,12 +20,8 @@ Rest FB 1.6.9 https://github.com/melendeznicolas/RestBA/raw/master/download/lib/
 
 Ejemplos
 ===========================
+*Lista todas las direcciones de todas las obras registradas en la Ciudad de Buenos Aires. En demolición, obra, ampliación parcial, etc...*
 
-public class Man {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		RestBAClient dataBairesClient = new DefaultRestBAClient();
 		List<ObrasRegistradas> fetchObrasRegistradas = dataBairesClient
@@ -42,4 +38,4 @@ public class Man {
 
 	}
 
-}
+
