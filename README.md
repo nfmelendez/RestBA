@@ -31,11 +31,6 @@ Ejemplos
 			System.out.println(obrasRegistradas.getDireccion());
 		}
 
-		JsonObject fetchDataset = dataBairesClient
-				.fetchDataset("mapa-establecimientos-educativos-privados");
-
-		System.out.println(fetchDataset);
-
 	}
 
 
