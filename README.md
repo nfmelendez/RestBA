@@ -5,7 +5,8 @@ RestBA
 
 *Tiene Licencia Apache, versión 2.0 , por lo que esta libreria se puede utilizar para cualquier actividad comercial.*
 
-Este blog post tiene información interesante: http://blog.melendez.com.ar/gobierno-abierto-accediendo-a-los-datos-de-la-ciudad-de-buenos-aires-usando-java/
+Este blog post tiene información interesante sobre el uso de RestBA:
+http://blog.melendez.com.ar/gobierno-abierto-accediendo-a-los-datos-de-la-ciudad-de-buenos-aires-usando-java/
 
 
 Quick start
