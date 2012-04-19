@@ -4,6 +4,14 @@ import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
 
 
+/**
+ * Utility Class con funciones comunes y sin comportamiento a todo el proyecto.
+ * 
+ * @author Nicolás Meléndez |
+ * Email: nfmelendez@gmail.com |
+ * Twitter: @nfmelendezs
+ *
+ */
 public class RestBAUtils {
 
 	private RestBAUtils() {

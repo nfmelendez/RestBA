@@ -1,4 +1,4 @@
-package ar.com.restba;
+package ar.com.restba.connectors;
 
 
 import static com.restfb.util.StringUtils.isBlank;
@@ -31,7 +31,7 @@ import com.restfb.exception.FacebookResponseStatusException;
  * @author <a href="http://restfb.com">Mark Allen</a>
  * @since 1.5
  */
-abstract class BaseRestFbConnector {
+public abstract class BaseRestFbConnector {
   /**
    * Handles {@code GET}s and {@code POST}s to the Facebook API endpoint.
    */
