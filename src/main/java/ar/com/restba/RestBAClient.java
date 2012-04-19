@@ -3,7 +3,6 @@ package ar.com.restba;
 import java.util.List;
 
 
-import ar.com.restba.connectors.DefaultRestBAClient;
 import ar.com.restba.json.JsonObject;
 import ar.com.restba.types.ObrasRegistradas;
 

@@ -1,4 +1,4 @@
-package ar.com.restba;
+package ar.com.restba.connectors;
 
 
 
@@ -24,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import ar.com.restba.connectors.BaseRestFbConnector;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonException;
 import ar.com.restba.json.JsonObject;

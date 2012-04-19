@@ -1,4 +1,4 @@
-package ar.com.restba.connectors;
+package ar.com.restba;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +9,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.com.restba.RestBAClient;
-import ar.com.restba.RestFbConnector;
+import ar.com.restba.connectors.RestFbConnector;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
 import ar.com.restba.types.ObrasRegistradas;
