@@ -10,7 +10,7 @@ package ar.com.restba.types;
  * Twitter: @nfmelendez
  *
  */
-public class ObrasRegistradas {
+public class ObraRegistrada {
 	
 	/** ID del resource dentro de Buenos Aires Data. Identifica univocamente este recurso. */
 	public static final String OBRAS_REGISTRADAS_ID = "ce067ee1-1a4c-46c2-a269-d01e21a7fa4d";
@@ -23,7 +23,7 @@ public class ObrasRegistradas {
 	private String tipoObra;
 	private String nombreProfesional;
 
-	public ObrasRegistradas() {
+	public ObraRegistrada() {
 	}
 
 	public String getnExpediente() {

@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import ar.com.restba.json.JsonObject;
-import ar.com.restba.types.ObrasRegistradas;
+import ar.com.restba.types.ObraRegistrada;
 
 /**
  * Esta es la interfase principal de RestBA y define como el cliente debe operar.
@@ -25,7 +25,7 @@ public interface RestBAClient {
 	 * 
 	 * @return Todas las obras registradas en la Ciudad de Buenos Aires
 	 */
-	public List<ObrasRegistradas> fetchObrasRegistradas();
+	public List<ObraRegistrada> fetchObrasRegistradas();
 
 	/**
 	 * Accede a los datos de la Ciudad sin ningun tipo de procesamiento.

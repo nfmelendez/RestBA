@@ -12,7 +12,7 @@ import java.util.List;
 import ar.com.restba.connectors.RestFbConnector;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
-import ar.com.restba.types.ObrasRegistradas;
+import ar.com.restba.types.ObraRegistrada;
 import ar.com.restba.utils.RestBAUtils;
 import au.com.bytecode.opencsv.CSVReader;
 
@@ -45,7 +45,7 @@ public class DefaultRestBAClient implements RestBAClient {
 	 * @return Todas las obras registradas en la Ciudad de Buenos Aires
 	 */
 	@Override
-	public List<ObrasRegistradas> fetchObrasRegistradas() {
+	public List<ObraRegistrada> fetchObrasRegistradas() {
 
 		com.restfb.json.JsonObject fetchObjectRestFb = restFbConnector
 				.fetchObject("obras-registradas",
@@ -54,10 +54,10 @@ public class DefaultRestBAClient implements RestBAClient {
 		JsonObject fetchObject = new JsonObject(fetchObjectRestFb.toString());
 		JsonArray resources = fetchObject.getJsonArray("resources");
 
-		List<ObrasRegistradas> obrasRegistradas = new ArrayList<ObrasRegistradas>();
+		List<ObraRegistrada> obrasRegistradas = new ArrayList<ObraRegistrada>();
 
 		JsonObject resource = RestBAUtils.findResourceById(resources,
-				ObrasRegistradas.OBRAS_REGISTRADAS_ID);
+				ObraRegistrada.OBRAS_REGISTRADAS_ID);
 
 		String url = resource.getString("url").replaceFirst("https", "http");
 		System.out.println(url);
@@ -85,7 +85,7 @@ public class DefaultRestBAClient implements RestBAClient {
 					firstTime = false;
 					continue;
 				}
-				ObrasRegistradas entity = new ObrasRegistradas();
+				ObraRegistrada entity = new ObraRegistrada();
 				entity.setnExpediente(nextLine[0]);
 				entity.setDireccion(nextLine[1]);
 				entity.setSmp(nextLine[2]);
