@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import ar.com.restba.connectors.con.RestBAIterator;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonException;
 import ar.com.restba.json.JsonObject;
@@ -68,7 +69,7 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
   /**
    * API endpoint URL.
    */
-  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://data.buenosaires.gob.ar/api/rest/dataset";
+  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://betteradio.com:9200";
 
   /**
    * Read-only API endpoint URL.
@@ -190,6 +191,24 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
     verifyParameterPresence("connectionType", connectionType);
     return new Connection<T>(this, makeRequest(connection, parameters), connectionType);
   }
+  
+  
+  
+  
+  /**
+   * @see com.restfb.FacebookClient#fetchConnection(java.lang.String,
+   *      java.lang.Class, com.restfb.Parameter[])
+   */
+  public <T> RestBAIterator<T> fetchConnectionRestBA(String connection, Class<T> connectionType, Parameter... parameters) {
+    verifyParameterPresence("connection", connection);
+    verifyParameterPresence("connectionType", connectionType);
+    return new RestBAIterator<T>(this, makeRequest(connection, parameters), connectionType);
+  }
+  
+  
+  
+  
+  
 
   /**
    * @see com.restfb.FacebookClient#fetchConnectionPage(java.lang.String,
@@ -452,8 +471,7 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
        */
       public Response makeRequest() throws IOException {
         return executeAsPost ? webRequestor.executePost(fullEndpoint, parameterString, binaryAttachments == null ? null
-            : binaryAttachments.toArray(new BinaryAttachment[] {})) : webRequestor.executeGet(fullEndpoint + "?"
-            + parameterString);
+            : binaryAttachments.toArray(new BinaryAttachment[] {})) : webRequestor.executeGet(fullEndpoint);
       }
     });
   }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.restba.connectors.RestFbConnector;
+import ar.com.restba.connectors.con.RestBAIterator;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
 import ar.com.restba.types.ObraRegistrada;
@@ -47,65 +48,76 @@ public class DefaultRestBAClient implements RestBAClient {
 	@Override
 	public List<ObraRegistrada> fetchObrasRegistradas() {
 
-		com.restfb.json.JsonObject fetchObjectRestFb = restFbConnector
-				.fetchObject("obras-registradas",
-						com.restfb.json.JsonObject.class);
+//		com.restfb.json.JsonObject fetchObjectRestFb = restFbConnector
+//				.fetchObject(
+//						"obras-registradas/obras/_search?q=ESTADO_TRAMITE:REGISTRADO",
+//						com.restfb.json.JsonObject.class);
+		
+		
+		String query = "obras-registradas/obras/_search?q=ESTADO_TRAMITE:REGISTRADO";
+		RestBAIterator<com.restfb.json.JsonObject> fetchObjectRestFb = restFbConnector
+				.fetchConnectionRestBA(query, com.restfb.json.JsonObject.class);
 
-		JsonObject fetchObject = new JsonObject(fetchObjectRestFb.toString());
-		JsonArray resources = fetchObject.getJsonArray("resources");
+		
+		System.out.println(fetchObjectRestFb);
 
-		List<ObraRegistrada> obrasRegistradas = new ArrayList<ObraRegistrada>();
+		// JsonObject fetchObject = new
+		// JsonObject(fetchObjectRestFb.toString());
+		// JsonArray resources = fetchObject.getJsonArray("resources");
+		//
+		// List<ObraRegistrada> obrasRegistradas = new
+		// ArrayList<ObraRegistrada>();
+		//
+		// JsonObject resource = RestBAUtils.findResourceById(resources,
+		// ObraRegistrada.OBRAS_REGISTRADAS_ID);
+		//
+		// String url = resource.getString("url").replaceFirst("https", "http");
+		// System.out.println(url);
+		// InputStream inputStream = null;
+		// URL urlconnect;
+		// try {
+		// urlconnect = new URL(url);
+		// URLConnection uc = urlconnect.openConnection();
+		// inputStream = uc.getInputStream();
+		// } catch (MalformedURLException eURL) {
+		// throw new RuntimeException(eURL);
+		// } catch (IOException e) {
+		// throw new RuntimeException(e);
+		// }
+		//
+		// CSVReader reader = null;
+		// reader = new CSVReader(new InputStreamReader(inputStream));
+		// String[] nextLine;
+		// boolean firstTime = true;
+		// try {
+		// while ((nextLine = reader.readNext()) != null) {
+		//
+		// // To Remove Header of CSV
+		// if (firstTime) {
+		// firstTime = false;
+		// continue;
+		// }
+		// ObraRegistrada entity = new ObraRegistrada();
+		// entity.setnExpediente(nextLine[0]);
+		// entity.setDireccion(nextLine[1]);
+		// entity.setSmp(nextLine[2]);
+		// entity.setEstadoTramite(nextLine[3]);
+		// entity.setFechaEstado(nextLine[4]);
+		// entity.setTipoObra(nextLine[5]);
+		// entity.setNombreProfesional(nextLine[6]);
+		// obrasRegistradas.add(entity);
+		// }
+		// } catch (IOException e) {
+		// throw new RuntimeException(e);
+		// } finally {
+		// try {
+		// reader.close();
+		// } catch (IOException e) {
+		// throw new RuntimeException(e);
+		// }
+		// }
 
-		JsonObject resource = RestBAUtils.findResourceById(resources,
-				ObraRegistrada.OBRAS_REGISTRADAS_ID);
-
-		String url = resource.getString("url").replaceFirst("https", "http");
-		System.out.println(url);
-		InputStream inputStream = null;
-		URL urlconnect;
-		try {
-			urlconnect = new URL(url);
-			URLConnection uc = urlconnect.openConnection();
-			inputStream = uc.getInputStream();
-		} catch (MalformedURLException eURL) {
-			throw new RuntimeException(eURL);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-
-		CSVReader reader = null;
-		reader = new CSVReader(new InputStreamReader(inputStream));
-		String[] nextLine;
-		boolean firstTime = true;
-		try {
-			while ((nextLine = reader.readNext()) != null) {
-
-				// To Remove Header of CSV
-				if (firstTime) {
-					firstTime = false;
-					continue;
-				}
-				ObraRegistrada entity = new ObraRegistrada();
-				entity.setnExpediente(nextLine[0]);
-				entity.setDireccion(nextLine[1]);
-				entity.setSmp(nextLine[2]);
-				entity.setEstadoTramite(nextLine[3]);
-				entity.setFechaEstado(nextLine[4]);
-				entity.setTipoObra(nextLine[5]);
-				entity.setNombreProfesional(nextLine[6]);
-				obrasRegistradas.add(entity);
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				reader.close();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		return obrasRegistradas;
+		return null;
 	}
 
 	/**
