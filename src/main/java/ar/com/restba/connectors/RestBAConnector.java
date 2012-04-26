@@ -55,7 +55,7 @@ import com.restfb.exception.FacebookResponseStatusException;
  * 
  * @author <a href="http://restfb.com">Mark Allen</a>
  */
-public class RestFbConnector extends BaseRestFbConnector implements FacebookClient {
+public class RestBAConnector extends BaseRestFbConnector implements FacebookClient {
   /**
    * Graph API access token.
    */
@@ -139,7 +139,7 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
    * Without an access token, you can view and search public graph data but
    * can't do much else.
    */
-  public RestFbConnector() {
+  public RestBAConnector() {
 	    this(null, new DefaultWebRequestor(), new DefaultJsonMapper());
   }
 
@@ -159,7 +159,7 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
    * @throws NullPointerException
    *           If {@code jsonMapper} or {@code webRequestor} is {@code null}.
    */
-  public RestFbConnector(String accessToken, WebRequestor webRequestor, JsonMapper jsonMapper) {
+  public RestBAConnector(String accessToken, WebRequestor webRequestor, JsonMapper jsonMapper) {
     super();
 
     verifyParameterPresence("jsonMapper", jsonMapper);
@@ -199,10 +199,10 @@ public class RestFbConnector extends BaseRestFbConnector implements FacebookClie
    * @see com.restfb.FacebookClient#fetchConnection(java.lang.String,
    *      java.lang.Class, com.restfb.Parameter[])
    */
-  public <T> RestBAIterator<T> fetchConnectionRestBA(String connection, Class<T> connectionType, Parameter... parameters) {
+  public <T> RestBAIterator<T> fetchConnectionRestBA(String connection, Class<T> connectionType,int page,  Parameter... parameters) {
     verifyParameterPresence("connection", connection);
     verifyParameterPresence("connectionType", connectionType);
-    return new RestBAIterator<T>(this, makeRequest(connection, parameters), connectionType);
+    return new RestBAIterator<T>(this, makeRequest(connection+ "&from=" + (page + 1) * 10, parameters), connectionType, connection, page);
   }
   
   

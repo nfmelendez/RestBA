@@ -7,9 +7,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import ar.com.restba.connectors.RestFbConnector;
+import ar.com.restba.connectors.RestBAConnector;
 import ar.com.restba.connectors.con.RestBAIterator;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
@@ -32,10 +33,10 @@ public class DefaultRestBAClient implements RestBAClient {
 	 * Es el connector de RestFB que utilizamos para hacernos de todas las
 	 * bondades de esta excelente libreria.
 	 */
-	private RestFbConnector restFbConnector;
+	private RestBAConnector restFbConnector;
 
 	public DefaultRestBAClient() {
-		restFbConnector = new RestFbConnector();
+		restFbConnector = new RestBAConnector();
 	}
 
 	/**
@@ -54,68 +55,17 @@ public class DefaultRestBAClient implements RestBAClient {
 //						com.restfb.json.JsonObject.class);
 		
 		
-		String query = "obras-registradas/obras/_search?q=ESTADO_TRAMITE:REGISTRADO";
+		String query = "gcba/obras-registradas/_search?q=ESTADO_TRAMITE:REGISTRADO";
 		RestBAIterator<com.restfb.json.JsonObject> fetchObjectRestFb = restFbConnector
-				.fetchConnectionRestBA(query, com.restfb.json.JsonObject.class);
+				.fetchConnectionRestBA(query, com.restfb.json.JsonObject.class,0);
 
+		for (List<com.restfb.json.JsonObject> list : fetchObjectRestFb) {
+			System.out.println(list.toString());
+			
+		}
 		
-		System.out.println(fetchObjectRestFb);
-
-		// JsonObject fetchObject = new
-		// JsonObject(fetchObjectRestFb.toString());
-		// JsonArray resources = fetchObject.getJsonArray("resources");
-		//
-		// List<ObraRegistrada> obrasRegistradas = new
-		// ArrayList<ObraRegistrada>();
-		//
-		// JsonObject resource = RestBAUtils.findResourceById(resources,
-		// ObraRegistrada.OBRAS_REGISTRADAS_ID);
-		//
-		// String url = resource.getString("url").replaceFirst("https", "http");
-		// System.out.println(url);
-		// InputStream inputStream = null;
-		// URL urlconnect;
-		// try {
-		// urlconnect = new URL(url);
-		// URLConnection uc = urlconnect.openConnection();
-		// inputStream = uc.getInputStream();
-		// } catch (MalformedURLException eURL) {
-		// throw new RuntimeException(eURL);
-		// } catch (IOException e) {
-		// throw new RuntimeException(e);
-		// }
-		//
-		// CSVReader reader = null;
-		// reader = new CSVReader(new InputStreamReader(inputStream));
-		// String[] nextLine;
-		// boolean firstTime = true;
-		// try {
-		// while ((nextLine = reader.readNext()) != null) {
-		//
-		// // To Remove Header of CSV
-		// if (firstTime) {
-		// firstTime = false;
-		// continue;
-		// }
-		// ObraRegistrada entity = new ObraRegistrada();
-		// entity.setnExpediente(nextLine[0]);
-		// entity.setDireccion(nextLine[1]);
-		// entity.setSmp(nextLine[2]);
-		// entity.setEstadoTramite(nextLine[3]);
-		// entity.setFechaEstado(nextLine[4]);
-		// entity.setTipoObra(nextLine[5]);
-		// entity.setNombreProfesional(nextLine[6]);
-		// obrasRegistradas.add(entity);
-		// }
-		// } catch (IOException e) {
-		// throw new RuntimeException(e);
-		// } finally {
-		// try {
-		// reader.close();
-		// } catch (IOException e) {
-		// throw new RuntimeException(e);
-		// }
-		// }
+		
+		
 
 		return null;
 	}
