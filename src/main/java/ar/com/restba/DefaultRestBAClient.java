@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import ar.com.restba.connectors.RestBAConnector;
-import ar.com.restba.connectors.con.RestBAIterator;
+import ar.com.restba.connectors.con.RestBAConnection;
 import ar.com.restba.json.JsonArray;
 import ar.com.restba.json.JsonObject;
 import ar.com.restba.types.ObraRegistrada;
@@ -56,8 +56,8 @@ public class DefaultRestBAClient implements RestBAClient {
 		
 		
 		String query = "gcba/obras-registradas/_search?q=ESTADO_TRAMITE:REGISTRADO";
-		RestBAIterator<com.restfb.json.JsonObject> fetchObjectRestFb = restFbConnector
-				.fetchConnectionRestBA(query, com.restfb.json.JsonObject.class,0);
+		RestBAConnection<com.restfb.json.JsonObject> fetchObjectRestFb = restFbConnector
+				.fetchConnectionRestBA(query, com.restfb.json.JsonObject.class, 0);
 
 		for (List<com.restfb.json.JsonObject> list : fetchObjectRestFb) {
 			System.out.println(list.toString());
