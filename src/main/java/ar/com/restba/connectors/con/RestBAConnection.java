@@ -79,13 +79,21 @@ public class RestBAConnection<T> implements Iterable<List<T>> {
 
 		JsonArray jsonData = hits.getJsonArray("hits");
 
-		for (int i = 0; i < jsonData.length(); i++)
-			data.add(connectionType.equals(JsonObject.class) ? (T) jsonData
-					.get(i) : restBaClient.getJsonMapper().toJavaObject(
-					jsonData.get(i).toString(), connectionType));
+		for (int i = 0; i < jsonData.length(); i++) {
+			T t;
+			JsonObject objectToMap = jsonData.getJsonObject(i).getJsonObject("_source");
+			if (connectionType.equals(JsonObject.class)) {
+				t = (T) objectToMap;
+			} else {
+				t = restBaClient.getJsonMapper().toJavaObject(
+						objectToMap.toString(), connectionType);
+			}
+
+			data.add(t);
+		}
 
 		if (page > 0) {
-		previousPageUrl = fullUrl;
+			previousPageUrl = fullUrl;
 		} else {
 			previousPageUrl = null;
 		}

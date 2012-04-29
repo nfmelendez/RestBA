@@ -69,7 +69,7 @@ public class RestBAConnector extends BaseRestFbConnector implements FacebookClie
   /**
    * API endpoint URL.
    */
-  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://betteradio.com:9200";
+  protected static final String FACEBOOK_GRAPH_ENDPOINT_URL = "http://localhost:9200";
 
   /**
    * Read-only API endpoint URL.
@@ -202,7 +202,8 @@ public class RestBAConnector extends BaseRestFbConnector implements FacebookClie
   public <T> RestBAConnection<T> fetchConnectionRestBA(String connection, Class<T> connectionType,int page,  Parameter... parameters) {
     verifyParameterPresence("connection", connection);
     verifyParameterPresence("connectionType", connectionType);
-    return new RestBAConnection<T>(this, makeRequest(connection+ "&from=" + (page + 1) * 10, parameters), connectionType, connection, page);
+    String request = makeRequest(connection+ "&from=" + (page + 1) * 10, parameters);
+	return new RestBAConnection<T>(this, request, connectionType, connection, page);
   }
   
   
