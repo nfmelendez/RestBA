@@ -1,6 +1,10 @@
 #java specific
 *.class
 target
+.classpath
+.project
+
+
 
 ## generic files to ignore
 *~
