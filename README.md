@@ -1,3 +1,4 @@
+Atención: Esta API esta  deprecada. no usar.
 ﻿RestBA
 ==========================
 
